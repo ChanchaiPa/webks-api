@@ -15,6 +15,7 @@ def hello():
 
 appname = "/webks"
 app.mount(appname+"/public", StaticFiles(directory="public",html=True), name="public")
+app.mount(appname+"/page",   StaticFiles(directory="page"  ,html=True), name="page")
 app.include_router(api_router1.router, prefix=appname+"/v1")    
 
 app.add_middleware(
