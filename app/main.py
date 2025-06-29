@@ -1,3 +1,4 @@
+from asyncio import run
 from fastapi import FastAPI, Request
 from app import api_router1, configs, pwd_utils
 from fastapi.staticfiles import StaticFiles
@@ -13,6 +14,37 @@ def hello():
     logging("Hello.....")
     return configs.info 
 
+@app.get("/webks/mock_data")
+def mock_data(wording: str = ""):
+    mock_data = run( Cache.getMockData() )
+    if (wording==""):
+        return mock_data
+
+    _wording = wording.lower()
+    new_data = []
+    for data in mock_data:
+        _fname = data["first_name"].lower()
+        if len(wording)>1 and _fname.startswith(_wording) :
+            if len(new_data)>10:
+                break
+            else:
+                new_data.append(data)  
+    if len(new_data)>10:
+        return new_data            
+
+    for data in mock_data:
+        _fname = data["first_name"].lower()
+        if len(wording)>1 and _fname.startswith( _wording )==False and _wording in _fname :
+            if len(new_data)>10:
+                break
+            else:
+                new_data.append(data)
+    return new_data
+
+
+
+
+##################
 appname = "/webks"
 app.mount(appname+"/public", StaticFiles(directory="public",html=True), name="public")
 app.mount(appname+"/page",   StaticFiles(directory="page"  ,html=True), name="page")

@@ -1,6 +1,8 @@
 #from fastapi import Depends
+import json
 from sqlalchemy import text
 from sqlalchemy.orm import Session
+from app import configs
 from app.database import get_db_session
 from aiocache import Cache
 
@@ -119,6 +121,18 @@ class Cache:
             logging(cmd + " ["+ str(len(ticket_right)) +"]")  
             await cache.set("ticket_right", ticket_right)             
         return ticket_right  
+
+
+    @staticmethod
+    async def getMockData():
+        mock_data = await cache.get("mock_data", default=[]) 
+        if (len(mock_data)==0):
+            print("READ===> " + configs.info["uploadpath"] + "/MOCK_DATA.json")
+            with open( configs.info["uploadpath"] + "/MOCK_DATA.json", 'r' ) as file:
+                mock_data = json.load(file)
+            await cache.set("mock_data", mock_data)             
+        return mock_data  
+
 
 
 
