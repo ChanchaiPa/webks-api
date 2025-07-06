@@ -1,8 +1,8 @@
-pip install "fastapi[standard]"
-pip install pydantic-settings
-pip install SQLAlchemy
-pip install psycopg2
-pip install "passlib[bcrypt]"
-pip install python-jose[cryptography]
-pip install aiocache
-pip install JPype1
+fastapi[standard]
+pydantic-settings
+SQLAlchemy
+psycopg2
+passlib[bcrypt]
+python-jose[cryptography]
+aiocache
+JPype1
