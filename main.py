@@ -14,7 +14,7 @@ def hello():
     logging("Hello.....")
     return configs.info 
 
-@app.get("/webks/mock_data")
+@app.get("/mock_data")
 def mock_data(wording: str = ""):
     mock_data = run( Cache.getMockData() )
     if (wording==""):
