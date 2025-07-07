@@ -11,13 +11,14 @@ def hello():
     #from asyncio import run
     #x= run( Cache.get_count() )
     #print(x)
-    logging("Hello.....")
+    appPath = AppPath()
+    logging("Hello....." + appPath.get_path())
     return configs.info 
 
-@app.get("/mock_data")
+@app.get("/webks/mock_data")
 def mock_data(wording: str = ""):
     mock_data = run( Cache.getMockData() )
-    if (wording==""):
+    if wording== "":
         return mock_data
 
     _wording = wording.lower()
@@ -70,9 +71,8 @@ def enpwd(pwd:str|None = None):
         return pwd_context.hash(pwd)    
 """
 
-
-import json
-@app.post("/test")
+"""
+@app.get("/test")
 async def test(request: Request) :
     #cmd = "select to_char(open_date, 'yyyy-mm') from problems where ticket_id=" + str(ticket_id)
     #open_date = db_session.execute(text(cmd)).scalar()
@@ -80,6 +80,15 @@ async def test(request: Request) :
     #cmd = "select max(seq_id) as i from hd_attachment where ticket_id=" + str(ticket_id)
     #cmd = "select max(ticket_id) as i from problems"
     #i = db_session.execute(text(cmd)).scalar()
-    _json = json.loads(await request.body())
-    print(_json)
+    #_json = json.loads(await request.body())
+    #print(_json)
     return "OK"
+"""
+
+
+from inspect import getfile
+import os
+class AppPath:
+    def get_path(self):
+        path = f"{os.path.dirname(getfile(self.__class__))}"
+        return path

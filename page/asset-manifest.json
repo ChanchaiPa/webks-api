@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/webks/page/static/css/main.c569b2f2.css",
+    "main.js": "/webks/page/static/js/main.afe0d2d3.js",
+    "static/js/453.9000706c.chunk.js": "/webks/page/static/js/453.9000706c.chunk.js",
+    "static/media/bootstrap-icons.woff?": "/webks/page/static/media/bootstrap-icons.39795c0b4513de014cf8.woff",
+    "static/media/bootstrap-icons.woff2?": "/webks/page/static/media/bootstrap-icons.b7bcc075b395c14ce8c2.woff2",
+    "static/media/orange.jpg": "/webks/page/static/media/orange.a177caa04c251510bb0f.jpg",
+    "static/media/logo_thaisri.svg": "/webks/page/static/media/logo_thaisri.52001f161bc991075777f696e032efd3.svg",
+    "index.html": "/webks/page/index.html",
+    "main.c569b2f2.css.map": "/webks/page/static/css/main.c569b2f2.css.map",
+    "main.afe0d2d3.js.map": "/webks/page/static/js/main.afe0d2d3.js.map",
+    "453.9000706c.chunk.js.map": "/webks/page/static/js/453.9000706c.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c569b2f2.css",
+    "static/js/main.afe0d2d3.js"
+  ]
+}

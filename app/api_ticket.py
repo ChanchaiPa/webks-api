@@ -15,7 +15,7 @@ from datetime import datetime
 
 from jpype import  JClass, JPackage, isJVMStarted, startJVM, shutdownJVM, getDefaultJVMPath, java, imports
 if not isJVMStarted():
-    startJVM(convertStrings=False, classpath=[configs.info["jarpath"]])
+    startJVM(convertStrings=False, classpath=["jar/*"])
 imports.registerDomain('ii.am.ticket') 
 
 
@@ -162,7 +162,7 @@ async def uploadfile(request: Request, db_session: Session = Depends(get_db_sess
 
     cmd1 = "select to_char(open_date, 'yyyy-mm') from problems where ticket_id=" + str(ticket_id)
     open_date  = db_session.execute(text(cmd1)).scalar()
-    uploadpath = configs.info["uploadpath"] +'/'+ open_date +'/'+  str(ticket_id)
+    uploadpath = 'upload/'+ open_date +'/'+  str(ticket_id)
     Path(uploadpath).mkdir(parents=True, exist_ok=True)
     logging("[Upload] Create Path " + uploadpath)
 
@@ -201,7 +201,7 @@ async def uploadfile(request: Request, db_session: Session = Depends(get_db_sess
 def downloadfile(ticket_id: int, seq_id: int, db_session: Session = Depends(get_db_session)):
     cmd1 = "select to_char(open_date, 'yyyy-mm') from problems where ticket_id=" + str(ticket_id)
     open_date  = db_session.execute(text(cmd1)).scalar()
-    uploadpath = configs.info["uploadpath"] +'/'+ open_date +'/'+  str(ticket_id)
+    uploadpath = 'upload/'+ open_date +'/'+  str(ticket_id)
 
     file_name = ""
     file_type = ""

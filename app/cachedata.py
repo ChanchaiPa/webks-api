@@ -127,8 +127,8 @@ class Cache:
     async def getMockData():
         mock_data = await cache.get("mock_data", default=[]) 
         if (len(mock_data)==0):
-            print("READ===> " + configs.info["uploadpath"] + "/MOCK_DATA.json")
-            with open( configs.info["uploadpath"] + "/MOCK_DATA.json", 'r' ) as file:
+            print("READ===> public/MOCK_DATA.json")
+            with open( "public/MOCK_DATA.json", 'r' ) as file:
                 mock_data = json.load(file)
             await cache.set("mock_data", mock_data)             
         return mock_data  
