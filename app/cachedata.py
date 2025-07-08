@@ -145,7 +145,7 @@ import time
 logger = logging.getLogger('webks')
 logger.setLevel(logging.INFO)
 
-logHandler = handlers.TimedRotatingFileHandler('./webksapi.log', when='M', interval=1)
+logHandler = handlers.TimedRotatingFileHandler('./logs/webksapi.log', when='M', interval=1)
 logHandler.setLevel(logging.INFO)
 logHandler.setFormatter(
     logging.Formatter("%(asctime)s [%(levelname)s]  %(message)s")
