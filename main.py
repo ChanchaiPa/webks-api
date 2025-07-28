@@ -15,34 +15,6 @@ def hello():
     logging("Hello....." + appPath.get_path())
     return configs.info 
 
-@app.get("/webks/mock_data")
-def mock_data(wording: str = ""):
-    mock_data = run( Cache.getMockData() )
-    if wording== "":
-        return mock_data
-
-    _wording = wording.lower()
-    new_data = []
-    for data in mock_data:
-        _fname = data["first_name"].lower()
-        if len(wording)>1 and _fname.startswith(_wording) :
-            if len(new_data)>10:
-                break
-            else:
-                new_data.append(data)  
-    if len(new_data)>10:
-        return new_data            
-
-    for data in mock_data:
-        _fname = data["first_name"].lower()
-        if len(wording)>1 and _fname.startswith( _wording )==False and _wording in _fname :
-            if len(new_data)>10:
-                break
-            else:
-                new_data.append(data)
-    return new_data
-
-
 
 
 ##################

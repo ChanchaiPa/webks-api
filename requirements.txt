@@ -6,3 +6,4 @@ passlib[bcrypt]
 python-jose[cryptography]
 aiocache
 JPype1
+openpyxl
